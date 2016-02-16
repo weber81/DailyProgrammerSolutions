@@ -40,7 +40,7 @@ def edge_detect(surface):
             pixArray[j][i] = (color, color, color)
     return values
 
-image = open("advice_dog.ppm", "r")
+image = open("ic_microphone.ppm", "r")
 
 text = [line.strip() for line in image][1:]
 
@@ -49,7 +49,7 @@ image.close()
 text = list(filter(lambda x: not x.startswith("#"), text))
 text = list(filter(lambda x: not x == "", text))
 
-text = list(map(int, " ".join(text).split(" ")))
+text = list(map(lambda x: min(int(x), 255), " ".join(text).split(" ")))
 
 width = text[0]
 height = text[1]
