@@ -172,9 +172,9 @@ def checkMusts(origIslands, bridges):
                         
                         if len(connection.bridges) == connection.value:
                             islandsToRemove.add(connection)
-            islandsToRemove.add(island)
+                    islandsToRemove.add(island)
 
-        #If the number of 2* connections is one more than the value, each connection gets 1 bridge
+        #If the number of 2*connections is one more than the value, each connection gets 1 bridge
         elif (4-island.connections.count(None))*2 == island.value+1:
             for connection in island.connections:
                 if connection != None:
@@ -192,7 +192,7 @@ def checkMusts(origIslands, bridges):
 
                         if len(island.bridges) == island.value:
                             islandsToRemove.add(island)
-            
+
         elif (4-island.connections.count(None)) == 1:
                 for connection in island.connections:
                     if connection != None:
@@ -211,8 +211,11 @@ def checkMusts(origIslands, bridges):
                             if len(island.bridges) == island.value:
                                 islandsToRemove.add(island)
                                 
-    for i in islandsToRemove:
-        origIslands.remove(i)
+    for i in islands:
+        if i.value == 5:
+            print(i)
+        if i.value == len(i.bridges):
+            origIslands.remove(i)
     print("")
 
 
@@ -224,7 +227,7 @@ def solve(origIslands):
     checkMusts(islands, bridges)
     draw(origIslands, bridges, islands)
 
-    for _ in range(5):
+    for _ in range(7):
         removeImpossibleAdjacents(islands, bridges)
         checkMusts(islands, bridges)
         draw(origIslands, bridges, islands)

@@ -40,7 +40,7 @@ def edge_detect(surface):
             pixArray[j][i] = (color, color, color)
     return values
 
-image = open("ic_microphone.ppm", "r")
+image = open("edge_detect_test.ppm", "r")
 
 text = [line.strip() for line in image][1:]
 
