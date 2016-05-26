@@ -32,13 +32,18 @@ def withoutMonkey(number):
 def withMonkeyBruteForce(number):
     for i in range(number, 100000000, number):
         start = i
-        good = True
-        for k in range(number):
-            if int(start/(number-1)) != start/(number-1):
-                good = False
-                break
-            start *= number/(number-1)
-            start += 1
-        if good:
+        #start is N-1/N of the previous step,
+        #So backwards is N/N-1
+        #So at any point, the number of coconuts \ N-1
+        try:
+            for j in range(number):
+                if start//(number-1) != start/(number-1):
+                    raise ValueError
+                start = start//(number-1)
+                start *= number
+                start += 1
             print(i, start)
             break
+        except ValueError:
+            pass
+        
