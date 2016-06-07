@@ -18,6 +18,13 @@ def E243():
 
 #Funny Plant
 def E242():
-    #
     #return functools.reduce(lambda x, y:(([x[0][i]+1 for i in range(len(x[0]))]+[0]*(sum(x[0])+len(x[0]))), x[1], x[2]+1)if sum(x[0]) < x[1]else x,*[[([0]*j, i, 1) for k in range(i)] for i, j in [list(map(int, input().split()))]])
     print(functools.reduce(lambda x, y:(([x[0][i]+1 for i in range(len(x[0]))]+[0]*(sum(x[0])+len(x[0]))), x[1], x[2]+1)if sum(x[0]) < x[1]else x,*[[([0]*j, i, 1) for k in range(i)] for i, j in [list(map(int, input().split()))]][2]))
+    
+#Alphabetical words
+def E228():
+    [print(i+" IN ORDER")if list(i)==sorted(i)else(print(i+" REVERSED")if sorted(i)==list(i)[::-1]else print(i+" NOT IN ORDER"))for i in[input(">").lower()]]
+
+#Stock Trading
+def E249():
+    print(max(list(map(lambda x: max(x, key=lambda y: y[1]-y[0]), [[list(zip(i, i[j:])) for j in range(2, len(i))] for i in [list(map(float, input(">").split()))]][0])), key=lambda x: x[1]-x[0]))
