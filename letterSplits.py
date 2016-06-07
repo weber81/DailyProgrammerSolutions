@@ -40,29 +40,15 @@ def runProgram(readFile=True):
 
 digraphs = None
 def isSentenceInWordList(sentence, wordList):
-    
-    for word in wordList:
-        for i in range(len(word)-1):
-            digraphs.add(word[i:i+2])
-    possibleWordBreaks = set()
+    if sentence == "":
+        return True
     for i in range(len(sentence)+1):
-        if not sentence[i:i+2] in digraphs and len(possibleWordBreaks) == 0:
-            return False
-        if sentence[0:i] in wordList:
-            possibleWordBreaks.add(sentence[0:i] + "/")
-        for breaks in possibleWordBreaks.copy():
-            if not sentence[len(breaks)-1+i:len(breaks)+i+1] in digraphs \
-                and len(possibleWordBreaks) == 0:
-                return False
-            if sentence[len(breaks)-1:i] in wordList:
-                possibleWordBreaks.add(breaks + sentence[len(breaks)-1:i] + "/")
-    if any(map(lambda x: len(x.replace("/","")) == len(sentence), possibleWordBreaks)):
-        for b in possibleWordBreaks:
-            if len(b.replace("/", "")) == len(sentence):
-                print(b)
-    return any(map(lambda x: len(x.replace("/","")) == len(sentence), possibleWordBreaks))
+        if sentence[:i] in wordList:
+            if isSentenceInWordList(sentence[i:], wordList):
+                return True
+    return False
         
 
 
-#if __name__ == "__main__":
-#    runProgram()
+if __name__ == "__main__":
+    runProgram()
