@@ -28,3 +28,12 @@ def E228():
 #Stock Trading
 def E249():
     print(max(list(map(lambda x: max(x, key=lambda y: y[1]-y[0]), [[list(zip(i, i[j:])) for j in range(2, len(i))] for i in [list(map(float, input(">").split()))]][0])), key=lambda x: x[1]-x[0]))
+
+#Splurtian Chemistry
+def E275(element, symbol):
+    try:
+        element.lower().index(symbol.lower()[1], element.lower().index(symbol.lower()[0])+1)
+        return True
+    except ValueError:
+        return False
+
