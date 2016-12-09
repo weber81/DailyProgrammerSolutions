@@ -12,7 +12,7 @@ def E254():
 def E254B():
     print(*[{**{chr(i):chr(ord('z')-i + ord('a')) for i in range(ord('a'), ord('z')+1)},**{chr(i):chr(ord('Z')-i + ord('A'))for i in range(ord('A'), ord('Z')+1)}}.get(j, j) for j in input()], sep="")
 
-#Abundand And Deficient Numbers
+#Abundant And Deficient Numbers
 def E243():
     return list(map(lambda x: "{} abundant by {}".format(x[0], x[1]-x[0]) if x[0]-x[1] < 0 else ("{} deficient".format(x[0]) if x[0] != x[1] else "{} ~~neither~~".format(x[0])), [(j,sum(list([((i if j%i == 0 else 0) for i in range(1, j))][0])))for j in [int(input(">>"))]]))[0]
 
