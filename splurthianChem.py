@@ -41,6 +41,27 @@ def SplurtianChemBonus2(element):
                        for j in range(len(element))
                        for i in range(j+1, len(element))]))
 
+def SplurthianChem102():
+    file = open("splurthianElements.txt")
+    elements = file.readlines()
+    elements = list(map(lambda x: x.strip(), elements))
+    file.close()
+
+    symbols = {}
+    for element in elements:
+        symbolFound = False
+        for i in range(len(element)-1):
+            if not symbolFound:
+                for j in range(i+1, len(element)):
+                    symbol = element[i].upper() + element[j].lower()
+                    if (not symbolFound) and (symbol not in symbols):
+                        symbols.update({symbol:element})
+                        symbolFound = True
+        if not symbolFound:
+#            print(element)
+            return symbols, element
+    return symbols, None
+
 """Blurthian Rules are the Same as Splurthian, except Rule 1 doesn't exist,
 Symbols can be any length"""
 def BlurthianChem(element, symbol):
