@@ -1,4 +1,4 @@
-import functools
+import functools, itertools
 
 #All the places your dog didn't win
 def E267():
@@ -37,3 +37,11 @@ def E275(element, symbol):
     except ValueError:
         return False
 
+def E313(array):
+    return set(map(lambda x: abs(x), array)) != set(array)
+
+def E314():
+    print(*list(map(lambda x: (x[0], x[-1]), [sorted(list(map(lambda x: int("".join(x)), list(itertools.permutations(input().split())))))]))[0])
+
+def E311(array):
+    print("JOLLY" if sorted(list(map(lambda x: abs(int(array[1:][x+1]) - int(array[1:][x])), range(len(array[1:])-1)))) == list(range(1, len(array[1:]))) else "NOT JOLLY")
